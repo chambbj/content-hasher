@@ -16,7 +16,7 @@ func Compute(f *os.File) [32]byte {
 			if err != nil {
 				return nil, n, err
 			}
-			sum := sha256.Sum256(bytes)
+			sum := sha256.Sum256(bytes[0:n])
 			return sum[:], n, nil
 		}(f)
 		if n == 0 {
